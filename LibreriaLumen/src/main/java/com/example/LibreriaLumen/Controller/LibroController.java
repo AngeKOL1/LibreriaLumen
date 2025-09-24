@@ -38,6 +38,20 @@ public class LibroController {
     public List<Libro> saveAll(@RequestBody List<Libro> libros) throws Exception {
         return service.saveAll(libros);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) throws Exception {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Libro> update(
+            @PathVariable Integer id,
+            @RequestBody Libro libro) throws Exception {
+
+        Libro actualizado = service.update(libro, id);
+        return ResponseEntity.ok(actualizado);
+    }
 }
 
 
