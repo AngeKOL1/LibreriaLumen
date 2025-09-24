@@ -1,5 +1,6 @@
 package com.example.LibreriaLumen.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,10 +24,12 @@ public class UsuarioRol {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
+    @JsonBackReference
     private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "rol_id", nullable = false)
+    @JsonBackReference
     private Rol rol;
 
     private LocalDate fechaAsignacion = LocalDate.now();

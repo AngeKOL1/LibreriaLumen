@@ -1,5 +1,6 @@
 package com.example.LibreriaLumen.Models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +33,7 @@ public class Usuario {
     private boolean estado;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<UsuarioRol> usuarioRoles = new ArrayList<>();
 
 }
